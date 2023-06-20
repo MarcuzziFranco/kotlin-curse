@@ -1,11 +1,14 @@
 package com.example.developerstools.permission
 
-import android.Manifest
 import android.app.Activity
 import android.content.Context
 import android.content.pm.PackageManager
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
+import com.example.developerstools.permission.Errors.Companion.ERROR_INITIALIZED_FUNCTION_ACTION_ACCEPTED
+import com.example.developerstools.permission.Errors.Companion.ERROR_INITIALIZED_FUNCTION_ACTION_MANUAL
+import com.example.developerstools.permission.Errors.Companion.ERROR_INITIALIZED_FUNCTION_ACTION_REFUSE
+
 
 class ManagerPermission(context: Context) {
     private var _context: Context
@@ -27,19 +30,19 @@ class ManagerPermission(context: Context) {
 
         if (ContextCompat.checkSelfPermission(_context, permission.namePermission) != PackageManager.PERMISSION_GRANTED) {
             //Permiso no aceptado por el momento.
-            requestCameraPermission()
+            requestPermission()
         } else {
             //Permisos aceptados defenitivamente.
             statusPermission = StatusPermission.ACCEPTED
-            funActionAccepted()
+            runAction(statusPermission)
         }
     }
 
-    private fun requestCameraPermission() {
+    private fun requestPermission() {
         if (ActivityCompat.shouldShowRequestPermissionRationale(_activityContext, permission.namePermission)) {
             //El usuario ya ah rechazado los permisos.
             statusPermission = StatusPermission.REQUIRE_MANUAL_ACTIVATION
-            funActionRequireManualActivation()
+            runAction(statusPermission)
         } else {
             //Perdir permisos
             ActivityCompat.requestPermissions(_activityContext, arrayOf(permission.namePermission),permission.code)
@@ -52,11 +55,11 @@ class ManagerPermission(context: Context) {
             if (grantResults.isNotEmpty() && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
                 //Aceptados.
                 statusPermission = StatusPermission.ACCEPTED;
-                funActionAccepted();
+                runAction(statusPermission)
             } else {
                 //No fueron aceptados.
                 statusPermission = StatusPermission.REFUSE;
-                funActionRefuse()
+                runAction(statusPermission)
             }
         }
     }
@@ -69,6 +72,23 @@ class ManagerPermission(context: Context) {
         funActionAccepted = accepted
         funActionRefuse = refused
         funActionRequireManualActivation = requireManualActivation
+    }
+
+    private fun runAction(statusPermission: StatusPermission){
+        when (statusPermission){
+            StatusPermission.ACCEPTED -> {
+                if (::funActionAccepted.isInitialized) funActionAccepted()
+                else throw ExceptionInInitializerError(ERROR_INITIALIZED_FUNCTION_ACTION_ACCEPTED)
+            }
+            StatusPermission.REFUSE-> {
+                if (::funActionRefuse.isInitialized) funActionRefuse()
+                else throw ExceptionInInitializerError(ERROR_INITIALIZED_FUNCTION_ACTION_REFUSE)
+            }
+            StatusPermission.REQUIRE_MANUAL_ACTIVATION ->{
+                if (::funActionRequireManualActivation.isInitialized) funActionRequireManualActivation()
+                else throw ExceptionInInitializerError(ERROR_INITIALIZED_FUNCTION_ACTION_MANUAL)
+            }
+        }
     }
 
 }

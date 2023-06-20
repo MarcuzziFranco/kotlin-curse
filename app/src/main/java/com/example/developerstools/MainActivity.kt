@@ -10,11 +10,9 @@ class MainActivity : BaseActivity() {
 
     private lateinit var binding:ActivityMainBinding
     override fun onCreate(savedInstanceState: Bundle?) {
-
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
-
 
         binding.btnPermission.setOnClickListener{
 
@@ -25,8 +23,6 @@ class MainActivity : BaseActivity() {
             )
             managerPermission.checkPermissions(777,Manifest.permission.CAMERA)
         }
-
-
 
     }
 
