@@ -1,11 +1,46 @@
 package com.example.developerstools
 
-import androidx.appcompat.app.AppCompatActivity
+import android.Manifest
 import android.os.Bundle
+import android.util.Log
+import com.example.developerstools.activity.BaseActivity
+import com.example.developerstools.databinding.ActivityMainBinding
 
-class MainActivity : AppCompatActivity() {
+class MainActivity : BaseActivity() {
+
+    private lateinit var binding:ActivityMainBinding
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
+        binding = ActivityMainBinding.inflate(layoutInflater)
+        setContentView(binding.root)
+
+        binding.btnPermission.setOnClickListener{
+
+            managerPermission.defineActions(
+                ::actionAcceptedPermission,
+                ::actionRefusePermission,
+                ::actionRequireManualActivation
+            )
+            managerPermission.checkPermissions(777,Manifest.permission.CAMERA)
+        }
+
     }
+
+    fun actionAcceptedPermission(){
+        Log.i("action","actionAcceptedPermission")
+        showToast("actionAcceptedPermission");
+    }
+
+    fun actionRefusePermission(){
+        Log.i("action","actionRefusePermission")
+        showToast("actionRefusePermission")
+    }
+
+    fun actionRequireManualActivation(){
+        Log.i("action","actionRequireManualActivation")
+        showToast("actionRequireManualActivation")
+    }
+
+
+
 }
