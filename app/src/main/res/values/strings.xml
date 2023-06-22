@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">DevelopersTools</string>
+    <string name="check_permission">Check permission</string>
 </resources>

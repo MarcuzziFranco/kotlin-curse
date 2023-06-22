@@ -28,14 +28,17 @@ class MainActivity : BaseActivity() {
 
     fun actionAcceptedPermission(){
         Log.i("action","actionAcceptedPermission")
+        showToast("actionAcceptedPermission");
     }
 
     fun actionRefusePermission(){
         Log.i("action","actionRefusePermission")
+        showToast("actionRefusePermission")
     }
 
     fun actionRequireManualActivation(){
         Log.i("action","actionRequireManualActivation")
+        showToast("actionRequireManualActivation")
     }
 
 
