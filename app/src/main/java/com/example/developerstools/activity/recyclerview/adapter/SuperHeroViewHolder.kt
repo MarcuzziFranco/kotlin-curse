@@ -1,12 +1,9 @@
 package com.example.developerstools.activity.recyclerview.adapter
 
 import android.view.View
-import android.widget.ImageView
-import android.widget.TextView
 import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView.ViewHolder
 import com.bumptech.glide.Glide
-import com.example.developerstools.R
 import com.example.developerstools.activity.recyclerview.SuperHero
 import com.example.developerstools.databinding.ItemSuperheroBinding
 
@@ -14,7 +11,11 @@ class SuperHeroViewHolder(view: View) : ViewHolder(view) {
 
     private val binding = ItemSuperheroBinding.bind(view)
 
-    fun render(superHeroModel: SuperHero,onClickListener:(SuperHero)-> Unit) {
+    fun render(
+        superHeroModel: SuperHero,
+        onClickListener: (SuperHero) -> Unit,
+        onClickDelete: (Int) -> Unit
+    ) {
         binding.tvSuperHeroName.text = superHeroModel.superHero
         binding.tvRealName.text = superHeroModel.realName
         binding.tvPublisher.text = superHeroModel.publisher
@@ -30,5 +31,7 @@ class SuperHeroViewHolder(view: View) : ViewHolder(view) {
         itemView.setOnClickListener{
             onClickListener(superHeroModel)
         }
+
+        binding.btDelete.setOnClickListener { onClickDelete(adapterPosition) }
     }
 }

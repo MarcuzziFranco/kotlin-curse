@@ -23,9 +23,9 @@
             android:id="@+id/tvSuperHeroName"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:textColor="@color/black"
             android:textSize="21sp"
             android:textStyle="bold"
-            android:textColor="@color/black"
             app:layout_constraintLeft_toRightOf="@id/ivSuperHero"
             app:layout_constraintRight_toRightOf="parent"
             app:layout_constraintTop_toTopOf="parent"
@@ -36,18 +36,27 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             app:layout_constraintLeft_toRightOf="@id/ivSuperHero"
-            app:layout_constraintTop_toBottomOf="@id/tvSuperHeroName"
             app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tvSuperHeroName"
             tools:text="Mermelada" />
 
         <TextView
             android:id="@+id/tvPublisher"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            app:layout_constraintRight_toRightOf="parent"
             app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
             tools:text="yo mismo" />
 
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/btDelete"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:backgroundTint="@color/red"
+            android:text="@string/bttxt_delete_item"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintLeft_toRightOf="@id/ivSuperHero" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

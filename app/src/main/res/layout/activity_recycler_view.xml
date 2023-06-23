@@ -9,8 +9,15 @@
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rvsuperhero"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content" />
 
-    </androidx.recyclerview.widget.RecyclerView>
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/btnNewSuperHero"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom"
+        android:text="@string/bttxt_add_item"
+        android:textStyle="bold" />
+
 
 </FrameLayout>

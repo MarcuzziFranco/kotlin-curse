@@ -2,4 +2,6 @@
     <string name="app_name">DevelopersTools</string>
     <string name="check_permission">Check permission</string>
     <string name="load_list">Go to recycler view</string>
+    <string name="bttxt_delete_item">Delete</string>
+    <string name="bttxt_add_item">Add</string>
 </resources>
