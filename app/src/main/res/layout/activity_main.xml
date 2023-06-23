@@ -8,14 +8,24 @@
     tools:context=".MainActivity">
 
     <androidx.appcompat.widget.AppCompatButton
-        android:id="@+id/btnPermission"
-        android:layout_width="wrap_content"
+        android:id="@+id/bt_permission"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:text="@string/check_permission"
         android:textSize="16sp"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/bt_load_list"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="@string/load_list"
+        android:textSize="16sp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/bt_permission" />
 
 
 
