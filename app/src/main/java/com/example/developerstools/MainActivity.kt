@@ -4,6 +4,8 @@ import android.Manifest
 import android.content.Intent
 import android.os.Bundle
 import android.util.Log
+import android.view.View
+import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
 import com.example.developerstools.activity.BaseActivity
 import com.example.developerstools.activity.recyclerview.RecyclerViewActivity
 import com.example.developerstools.databinding.ActivityMainBinding
@@ -12,9 +14,15 @@ class MainActivity : BaseActivity() {
 
     private lateinit var binding:ActivityMainBinding
     override fun onCreate(savedInstanceState: Bundle?) {
+        val screenSplash = installSplashScreen()
+
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
+
+        Thread.sleep(1000)
+        screenSplash.setKeepOnScreenCondition{false}
+
 
         binding.btPermission.setOnClickListener{
 
