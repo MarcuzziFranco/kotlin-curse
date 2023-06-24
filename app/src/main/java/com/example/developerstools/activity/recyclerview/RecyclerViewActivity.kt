@@ -2,12 +2,16 @@ package com.example.developerstools.activity.recyclerview
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.os.Handler
+import android.os.Looper
 import android.util.Log
 import android.widget.Toast
+import androidx.core.content.ContextCompat
 import androidx.core.widget.addTextChangedListener
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.example.developerstools.R
 import com.example.developerstools.activity.BaseActivity
 import com.example.developerstools.activity.recyclerview.adapter.SuperHeroAdapter
 import com.example.developerstools.databinding.ActivityRecyclerViewBinding
@@ -29,6 +33,7 @@ class RecyclerViewActivity : AppCompatActivity() {
         initRecycleView()
         configListenerCreateBt()
         configListenerFilterRv()
+        configListenerSwipeReload()
     }
 
     private fun createSuperHero() {
@@ -94,6 +99,17 @@ class RecyclerViewActivity : AppCompatActivity() {
                     superHero.superHero.lowercase().contains(userFilter.toString().lowercase())
                 }
             adapter.updateSuperHero(superheroFiltered)
+        }
+    }
+
+    private fun configListenerSwipeReload(){
+
+        binding.swipe.setColorSchemeResources(R.color.red,R.color.gree,R.color.orange)
+        binding.swipe.setProgressBackgroundColorSchemeColor(ContextCompat.getColor(this,R.color.teal_200))
+
+        binding.swipe.setOnRefreshListener {
+            Log.i("swipe","reload")
+            Handler(Looper.getMainLooper()).postDelayed({binding.swipe.isRefreshing = false},5000)
         }
     }
 }
