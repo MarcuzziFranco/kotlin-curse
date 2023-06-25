@@ -21,6 +21,9 @@
         android:theme="@style/Theme.DevelopersTools"
         tools:targetApi="31">
         <activity
+            android:name=".activity.apiview.ApiActivity"
+            android:exported="false" />
+        <activity
             android:name=".activity.recyclerview.RecyclerViewActivity"
             android:exported="false" />
         <activity

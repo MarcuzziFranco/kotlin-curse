@@ -7,6 +7,7 @@ import android.util.Log
 import android.view.View
 import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
 import com.example.developerstools.activity.BaseActivity
+import com.example.developerstools.activity.apiview.ApiActivity
 import com.example.developerstools.activity.recyclerview.RecyclerViewActivity
 import com.example.developerstools.databinding.ActivityMainBinding
 
@@ -36,6 +37,11 @@ class MainActivity : BaseActivity() {
 
         binding.btLoadList.setOnClickListener{
             val intent = Intent(this,RecyclerViewActivity::class.java)
+            startActivity(intent)
+        }
+
+        binding.btGoApi.setOnClickListener {
+            val intent = Intent(this,ApiActivity::class.java)
             startActivity(intent)
         }
 
