@@ -37,6 +37,16 @@
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/bt_load_list" />
 
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/bt_go_notifications"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="Go to notification view"
+        android:textSize="16sp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/bt_go_api" />
+
 
 
 
