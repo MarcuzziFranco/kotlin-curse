@@ -8,6 +8,7 @@ import android.view.View
 import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
 import com.example.developerstools.activity.BaseActivity
 import com.example.developerstools.activity.apiview.ApiActivity
+import com.example.developerstools.activity.notificationview.NotificationActivity
 import com.example.developerstools.activity.recyclerview.RecyclerViewActivity
 import com.example.developerstools.databinding.ActivityMainBinding
 
@@ -45,6 +46,10 @@ class MainActivity : BaseActivity() {
             startActivity(intent)
         }
 
+        binding.btGoNotifications.setOnClickListener {
+            val intent =  Intent(this,NotificationActivity::class.java)
+            startActivity(intent)
+        }
 
     }
 
