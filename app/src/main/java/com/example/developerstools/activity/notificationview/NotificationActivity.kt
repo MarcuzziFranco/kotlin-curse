@@ -1,5 +1,6 @@
 package com.example.developerstools.activity.notificationview
 
+import android.app.AlarmManager
 import android.app.NotificationChannel
 import android.app.NotificationManager
 import android.app.PendingIntent
@@ -12,7 +13,9 @@ import androidx.core.app.NotificationCompat
 import androidx.core.app.NotificationManagerCompat
 import com.example.developerstools.MainActivity
 import com.example.developerstools.R
+import com.example.developerstools.activity.notificationview.AlarmNotification.Companion.NOTIFICATION_ID
 import com.example.developerstools.databinding.ActivityNotificationBinding
+import java.util.Calendar
 
 class NotificationActivity : AppCompatActivity() {
 
@@ -31,43 +34,23 @@ class NotificationActivity : AppCompatActivity() {
         createChannel()
 
         binding.btLaunchNotification.setOnClickListener{
-            createSimpleNotification()
+            scheudleNotification()
         }
     }
 
-
-    fun createSimpleNotification(){
-
-        val intent = Intent(this,MainActivity::class.java).apply {
-            flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK    //CONFIGURATION FLAG INTENT
-        }
-
-
-        //val flag = if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) PendingIntent.FLAG_IMMUTABLE else 0; //This check only for sdk < 24
-        val pendingIntent:PendingIntent = PendingIntent.getActivity(
-            this,
-            0,
+    private fun scheudleNotification() {
+        val intent = Intent(applicationContext,AlarmNotification::class.java)
+        val pendingIntent = PendingIntent.getBroadcast(
+            applicationContext,
+            NOTIFICATION_ID,
             intent,
-            PendingIntent.FLAG_IMMUTABLE
+            PendingIntent.FLAG_IMMUTABLE or PendingIntent.FLAG_UPDATE_CURRENT
         )
 
-        val builder = NotificationCompat.Builder(this,MY_CHANNEL_ID)
-            .setSmallIcon(android.R.drawable.btn_dialog)
-            .setContentTitle("TITLE")
-            .setContentText("Example text xD")
-            .setStyle(NotificationCompat.BigTextStyle().bigText("Lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime mollitia,\n" +
-                    "molestiae quas vel sint commodi repudiandae consequuntur voluptatum laborum\n" +
-                    "numquam blanditiis harum quisquam eius sed odit fugiat iusto fuga praesentium\n" +
-                    "optio, eaque rerum! Provident similique accusantium nemo autem. Veritatis\n" +
-                    "obcaecati tenetur iure eius earum ut molestias architecto voluptate aliquam"))
-
-            .setContentIntent(pendingIntent)
-            .setPriority(NotificationCompat.PRIORITY_DEFAULT)
-
-        with(NotificationManagerCompat.from(this)){
-            notify(1,builder.build())
-        }
+        val alarmManager= getSystemService(Context.ALARM_SERVICE) as AlarmManager
+        alarmManager.setExact(AlarmManager.RTC_WAKEUP,Calendar.getInstance().timeInMillis + 15000,pendingIntent)
     }
+
 
     private fun createChannel(){
         if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.O){
