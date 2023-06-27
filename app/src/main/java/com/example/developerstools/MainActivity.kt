@@ -4,12 +4,12 @@ import android.Manifest
 import android.content.Intent
 import android.os.Bundle
 import android.util.Log
-import android.view.View
 import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
 import com.example.developerstools.activity.BaseActivity
 import com.example.developerstools.activity.apiview.ApiActivity
 import com.example.developerstools.activity.notificationview.NotificationActivity
 import com.example.developerstools.activity.recyclerview.RecyclerViewActivity
+import com.example.developerstools.arquitecturemvvm.view.QuoteActivity
 import com.example.developerstools.databinding.ActivityMainBinding
 
 class MainActivity : BaseActivity() {
@@ -48,6 +48,11 @@ class MainActivity : BaseActivity() {
 
         binding.btGoNotifications.setOnClickListener {
             val intent =  Intent(this,NotificationActivity::class.java)
+            startActivity(intent)
+        }
+
+        binding.btGoQuotes.setOnClickListener {
+            val intent = Intent(this,QuoteActivity::class.java)
             startActivity(intent)
         }
 

@@ -5,4 +5,5 @@
     <string name="load_api">Go to api view</string>
     <string name="bttxt_delete_item">Delete</string>
     <string name="bttxt_add_item">Add</string>
+    <string name="bttxt_quotes">Go to view mvvm</string>
 </resources>
