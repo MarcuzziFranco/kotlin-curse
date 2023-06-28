@@ -23,7 +23,7 @@
         android:theme="@style/Theme.DevelopersTools"
         tools:targetApi="31">
         <activity
-            android:name=".arquitecturemvvm.view.QuoteActivity"
+            android:name=".arquitecturemvvm.ui.view.QuoteActivity"
             android:exported="false" />
 
         <receiver

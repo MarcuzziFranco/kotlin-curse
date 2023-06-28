@@ -9,7 +9,7 @@ import com.example.developerstools.activity.BaseActivity
 import com.example.developerstools.activity.apiview.ApiActivity
 import com.example.developerstools.activity.notificationview.NotificationActivity
 import com.example.developerstools.activity.recyclerview.RecyclerViewActivity
-import com.example.developerstools.arquitecturemvvm.view.QuoteActivity
+import com.example.developerstools.arquitecturemvvm.ui.view.QuoteActivity
 import com.example.developerstools.databinding.ActivityMainBinding
 
 class MainActivity : BaseActivity() {
@@ -52,7 +52,7 @@ class MainActivity : BaseActivity() {
         }
 
         binding.btGoQuotes.setOnClickListener {
-            val intent = Intent(this,QuoteActivity::class.java)
+            val intent = Intent(this, QuoteActivity::class.java)
             startActivity(intent)
         }
 
