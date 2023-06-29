@@ -7,7 +7,9 @@ import androidx.core.view.isVisible
 import androidx.lifecycle.Observer
 import com.example.developerstools.arquitecturemvvm.ui.viewmodel.QuoteViewModel
 import com.example.developerstools.databinding.ActivityQuoteBinding
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class QuoteActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityQuoteBinding

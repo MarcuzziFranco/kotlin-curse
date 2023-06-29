@@ -1,9 +1,12 @@
 package com.example.developerstools.arquitecturemvvm.data.model
 
+import javax.inject.Inject
+import javax.inject.Singleton
 import kotlin.random.Random
 
-class QuoteProvider {
-    companion object {
+@Singleton
+class QuoteProvider @Inject constructor() {
+    //companion object {
         var quotes:List<QuoteModel> = emptyList()
-    }
+    //}
 }
